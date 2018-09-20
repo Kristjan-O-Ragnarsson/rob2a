@@ -16,7 +16,7 @@
 
 int power = 127;
 int reversePower = power * -1;
-int driveTime = 500;
+int driveTime = 1000;
 int stopTime = 250;
 
 void driveForward(int driveTime, int counter){
@@ -43,7 +43,7 @@ void driveStop(int stopTime){
 task main()
 {
 	wait1Msec(1000);
-	for (int i = 1; i < 5; i++){
+	for (int i = 1; i <= 5; i++){
 		driveForward(driveTime, i);
 		driveStop(stopTime);
 		driveBackwards(driveTime, i);
