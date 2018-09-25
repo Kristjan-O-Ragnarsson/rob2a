@@ -6,11 +6,13 @@
 |*                                         - Moving Forward -                                         *|
 |*                                      ROBOTC on VEX 2.0 CORTEX                                      *|
 |*                                                                                                    *|
-|*  This program instructs your robot to move forward at full power for .5m  backwards .5m            *|
-|*                                                                                                    *|
+|*  This program instructs your robot to move forward for distance then backward then forward again   *|
+|*  incremating .5 m each time until 2.5 m in both directions is reached.                             *|
 |*                                                                                                    *|
 |*                                        ROBOT CONFIGURATION                                         *|
 |*    NOTES:                                                                                          *|
+|*         * DO NOT USE IS NOT RELIIBLE																																*|
+|*         * Time is used to messure distance                                                         *|
 |*                                                                                                    *|
 \*-----------------------------------------------------------------------------------------------4246-*/
 
