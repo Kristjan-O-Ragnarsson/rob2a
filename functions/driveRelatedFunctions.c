@@ -1,3 +1,3 @@
-int driveDist(int cm){
-	return (49 * cm) \ 10;
+int driveDist(float cm){
+	return (cm / 32.0) * 360;
 }

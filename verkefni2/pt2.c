@@ -13,42 +13,53 @@
 |*                                                                                                    *|
 |*                                        ROBOT CONFIGURATION                                         *|
 |*    NOTES:                                                                                          *|
-|*    1)  Reversing 'rightMotor' (port 2) in the "Motors and Sensors Setup" is needed with the        *|
-|*        "Squarebot" model, but may not be needed for all robot configurations.                      *|
-|*    2)  Whichever encoder is being used for feedback should be cleared just before it starts        *|
-|*        counting by using the "SensorValue(encoder) = 0;".  This helps ensure consistancy.          *|
-|*                                                                                                    *|
-|*    MOTORS & SENSORS:                                                                               *|
-|*    [I/O Port]          [Name]              [Type]                [Description]                     *|
-|*    Motor   - Port 2    rightMotor          VEX 3-wire module     Right side motor                  *|
-|*    Motor   - Port 3    leftMotor           VEX 3-wire module     Left side motor                   *|
-|*    Digital - Port 1,2  rightEncoder        VEX Shaft Encoder     Right side                        *|
-|*    Digital - Port 3,4  leftEncoder         VEX Shaft Encoder     Left side                         *|
+
 \*----------------------------------------------------------------------------------------------------*/
 const int ENERTIA = 70;
+int stopTime = 250;
+int power;
+
+
+void drive(float dist, int counter, bool forward){
+	int encoderTicks = driveDist(dist);
+	int encoderStopValue = encoderTicks * counter;
+	SensorValue[rightEncoder] = 0;
+  SensorValue[leftEncoder] = 0;
+	if (forward){
+		power = 63;
+	}
+	else{
+		power = -63;
+	}
+	while(abs(SensorValue[rightEncoder]) <encoderStopValue-ENERTIA)
+  {
+    motor[rightMotor] = power;
+    motor[leftMotor] = power;
+  }
+   motor[rightMotor] = 0;
+   motor[leftMotor] = 0;
+}
+
+void driveStop(int stopTime){
+	motor[rightMotor] = 0;
+	motor[leftMotor]  = 0;
+	wait1Msec(stopTime);
+}
 
 //+++++++++++++++++++++++++++++++++++++++++++++| MAIN |+++++++++++++++++++++++++++++++++++++++++++++++
 task main()
 {
-  wait1Msec(2000);  // 2 Second Delay
+  wait1Msec(2000);
+  for (int i = 1; i <= 5; i++){
+		drive(10.0, i, true);
+		driveStop(stopTime);
+		drive(10.0, i, false);
+		driveStop(stopTime);
 
-  //Clear Encoders
-  SensorValue[rightEncoder] = 0;
-  SensorValue[leftEncoder] = 0;
-
-  while(abs(SensorValue[rightEncoder]) <720-ENERTIA)// While less than 5 rotations on the leftEncoder...
-  {
-    //...Move Forward
-    motor[rightMotor] = 63;
-    motor[leftMotor] = 63;
-  }
-   	motor[rightMotor] = 0;
-    motor[leftMotor] = 0;
+	}
 }
-		void drive(int dist, int counter, bool forward){
-			if (forward){
-			}
-			else{
-			}
-		}
+
+
+
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
