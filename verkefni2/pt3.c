@@ -2,7 +2,7 @@
 #pragma config(Sensor, dgtl11,  leftEncoder,         sensorQuadEncoder)
 #pragma config(Motor,  port2,           rightMotor,    tmotorNormal, openLoop)
 #pragma config(Motor,  port3,           leftMotor,     tmotorNormal, openLoop, reversed)
-
+#include "../functions/driveRelatedFunctions.c";
 
 /*----------------------------------------------------------------------------------------------------*\
 |*                                 - ADVANCED Movement by Rotation -                                  *|
@@ -18,7 +18,7 @@
 const float TURNBASE = 3.335;
 // Functions Prototypes
 void Forward(float r);
-void TurnLeft(int deg);
+//void TurnLeft(int deg);
 
 // Declare Global Variables
 const float rotations = 360.0;
@@ -29,16 +29,20 @@ const float rotations = 360.0;
 task main()
 {
   wait1Msec(2000);
-
-  int i;
-  for(i=0; i<4; i++)
-  {
-    Forward(1.0);
-    TurnLeft(90);
-  }
+  drive(50.0, true);
+  driveStop(stopTime);
+  turn(90, true);
+  drive(50.0, true);
+  driveStop(stopTime);
+  turn(90, false);
+  drive(50.0, true);
+  driveStop(stopTime);
+  turn(90, false);
+  drive(50.0, true);
+  driveStop(stopTime);
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+/*
 
 //--------------------------------------------| FORWARD |---------------------------------------------
 void Forward(float r)
@@ -58,6 +62,7 @@ void Forward(float r)
 //----------------------------------------------------------------------------------------------------
 
 //-------------------------------------------| TURN LEFT |--------------------------------------------
+
 void TurnLeft(int deg)
 {
   SensorValue[rightEncoder] = 0;
@@ -72,4 +77,5 @@ void TurnLeft(int deg)
   motor[rightMotor] = 0;
   motor[leftMotor]  = 0;
 }
+*/
 //----------------------------------------------------------------------------------------------------
