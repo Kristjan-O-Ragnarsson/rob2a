@@ -31,13 +31,13 @@ task main()
   wait1Msec(2000);
   drive(50.0, true);
   driveStop(stopTime);
-  turn(90, true);
+  gyroTurn(90, true);
   drive(50.0, true);
   driveStop(stopTime);
-  turn(90, false);
+  gyroTurn(90, false);
   drive(50.0, true);
   driveStop(stopTime);
-  turn(90, false);
+  gyroTurn(90, false);
   drive(50.0, true);
   driveStop(stopTime);
 }
