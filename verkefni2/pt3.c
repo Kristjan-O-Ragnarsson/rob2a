@@ -8,8 +8,8 @@
 |*                                 - ADVANCED Movement by Rotation -                                  *|
 |*                                      ROBOTC on VEX 2.0 CORTEX                                      *|
 |*                                                                                                    *|
-|*  This program uses functions 'TurnLeft(float)' and 'Forward(float)' to very neatly and modularly   *|
-|*  run your robot in a square.  There is a two second pause at the beginning of the program.         *|
+|*  This program uses functions 'Turn(float, bool)' and 'drive(float, bool)' to very neatly and       *|
+|*  modularly run your robot in a square. There is a two second pause at the beginning of the program.*|
 |*                                                                                                    *|
 |*                                        ROBOT CONFIGURATION                                         *|
 |*    NOTES:                                                                                          *|
