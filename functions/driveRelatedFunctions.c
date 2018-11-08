@@ -1,7 +1,7 @@
 const float TURNBASE = 3.335;
-//const int ENERTIA = 70;
-//int stopTime = 250;
-//int power;
+const int ENERTIA = 70;
+int stopTime = 250;
+int power;
 
 
 int driveDist(float cm){
@@ -27,7 +27,7 @@ void turn(int deg, bool left){
 	motor[rightMotor] = 0;
   motor[leftMotor]  = 0;
 }
-/*
+
 void drive(float dist, bool forward){
 	int encoderTicks = driveDist(dist);
 	int encoderStopValue = encoderTicks * i;
@@ -74,4 +74,4 @@ void driveStop(int stopTime){
 	motor[rightMotor] = 0;
 	motor[leftMotor]  = 0;
 	wait1Msec(stopTime);
-}*/
+}
