@@ -8,16 +8,16 @@
 |*                                - Clawbot Single Joystick Control -                                 *|
 |*                                      ROBOTC on VEX 2.0 Cortex                                      *|
 |*                                                                                                    *|
-|*  This program uses a single joystick, either right or left to drive the robot. Use notes below     *|
-|*  to reconfigure which joystick is used. The joystick buttons are used to raise and lower the arm.	*|
-|*  The joystick buttons are used to open and close the claw.																					*|
-|*																																																		*|
+|*  This program uses both joysticks to drive the robot.The joystick buttons are used to raise and    *|
+|*  lower the arm.  																				  *|
+|*  The joystick buttons are used to open and close the claw.										  *|
+|*																									  *|
 |*                                        ROBOT CONFIGURATION                                         *|
 |*    NOTES:                                                                                          *|
-|*    1)	Ch1 is the X axis and Ch2 is the Y axis for the RIGHT joystick.                             *|
-|*    2)	Ch3 is the Y axis and Ch4 is the X axis for the LEFT joystick.                              *|
-|*		3)	Button 5U and 5L are on the front left side of the joystick.																*|
-|*		3)	Button 6U and 6L are on the front right side of the joystick.																*|
+|*    1)	Ch1 is the X axis and Ch2 is the Y axis for the RIGHT joystick.                           *|
+|*    2)	Ch3 is the Y axis and Ch4 is the X axis for the LEFT joystick.                            *|
+|*	  3)	Button 5U and 5L are on the front left side of the joystick.							  *|
+|*	  3)	Button 6U and 6L are on the front right side of the joystick.							  *|
 |*                                                                                                    *|
 |*    MOTORS & SENSORS:                                                                               *|
 |*    [I/O Port]        [Name]          [Type]                               [Description]            *|
