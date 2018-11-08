@@ -2,7 +2,9 @@
 #pragma config(Sensor, dgtl11,  leftEncoder,         sensorQuadEncoder)
 #pragma config(Motor,  port2,           rightMotor,    tmotorNormal, openLoop)
 #pragma config(Motor,  port3,           leftMotor,     tmotorNormal, openLoop, reversed)
+#pragma config(Sensor, dgtl8,   touchSensor,			sensorTouch)
 #include "../functions/driveRelatedFunctions.c";
+#include "../verkefni3/tasks.c"
 
 /*----------------------------------------------------------------------------------------------------*\
 |*                                 - ADVANCED Movement by Rotation -                                  *|
@@ -28,6 +30,7 @@ const float rotations = 360.0;
 //+++++++++++++++++++++++++++++++++++++++++++++| MAIN |+++++++++++++++++++++++++++++++++++++++++++++++
 task main()
 {
+	StartTask(StopIfNeed);
   wait1Msec(2000);
   drive(50.0, true);
   driveStop(stopTime);
