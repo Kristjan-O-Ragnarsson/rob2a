@@ -1,4 +1,4 @@
-#pragma config(Sensor, in3,    lineFollowerRIGHT,   sensorLineFollower)
+ #pragma config(Sensor, in3,    lineFollowerRIGHT,   sensorLineFollower)
 #pragma config(Sensor, in2,    lineFollowerCENTER,  sensorLineFollower)
 #pragma config(Sensor, in1,    lineFollowerLEFT,    sensorLineFollower)
 #pragma config(Sensor, dgtl8,   touchSensor,			sensorTouch)
@@ -38,7 +38,7 @@ task main()
   StartTask(StopIfNeed);
   // The program waits for 2000 milliseconds before continuing.
 
-  int threshold = 2000;      /* found by taking a reading on both DARK and LIGHT    */
+  int threshold = 2500;      /* found by taking a reading on both DARK and LIGHT    */
                             /* surfaces, adding them together, then dividing by 2. */
   while(true)
   {
@@ -56,22 +56,22 @@ task main()
     if(SensorValue(lineFollowerLEFT) > threshold)
     {
       // counter-steer right:
-      motor[leftMotor]  = 63;
-      motor[rightMotor] = 0;
+      motor[leftMotor]  = -31;
+      motor[rightMotor] = 31;
     }
     // CENTER sensor sees dark:
     if(SensorValue(lineFollowerCENTER) > threshold)
     {
       // go straight
-      motor[leftMotor]  = 63;
-      motor[rightMotor] = 63;
+      motor[leftMotor]  = 47;
+      motor[rightMotor] = 47;
     }
     // LEFT sensor sees dark:
     if(SensorValue(lineFollowerRIGHT) > threshold)
     {
       // counter-steer left:
-      motor[leftMotor]  = 0;
-      motor[rightMotor] = 63;
+      motor[leftMotor]  = 31;
+      motor[rightMotor] = -31;
     }
   }
 }
