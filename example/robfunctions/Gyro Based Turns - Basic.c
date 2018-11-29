@@ -17,15 +17,13 @@ Motor Port 3        leftMotor           VEX Motor             Left side motor
 Analog Port 8       in8                 VEX Gyro              Top-center mounted,
                                                               away from the Cortex
 ----------------------------------------------------------------------------------------------------*/
-void turn_giro(int degrees10,bool counterclock){
-	//Completely clear out any previous sensor readings by setting the port to "sensorNone"
-	SensorType[in7] = sensorNone;
+void giroTurn(int degrees,bool counterclock){
+	SensorType[in8] = sensorNone;
   wait1Msec(1000);
-  //Reconfigure Analog Port 7 as a Gyro sensor and allow time for ROBOTC to calibrate it
-  SensorType[in7] = sensorGyro;
+  SensorType[in8] = sensorGyro;
   wait1Msec(2000);
 
-  while(abs(SensorValue[in7]) < degrees10)
+  while(abs(SensorValue[in8]) < degrees * 10)
   {
 		if (counterclock){
 		motor[rightMotor] = 70;
@@ -36,8 +34,6 @@ void turn_giro(int degrees10,bool counterclock){
 		motor[leftMotor] = 70;
 		}
   }
-
-  //Brief brake to stop some drift
   motor[rightMotor] = -5;
   motor[leftMotor] = 5;
   wait1Msec(250);
@@ -47,6 +43,6 @@ void turn_giro(int degrees10,bool counterclock){
 task main()
 {
 
-	turn_giro(900,true);
+	turn_giro(90,true);
 
 }
