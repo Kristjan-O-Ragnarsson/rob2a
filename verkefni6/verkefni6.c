@@ -14,12 +14,13 @@ task main()
 	StartTask(StopIfNeed);
 	StartTask(BAtteryDisplay);
 	StartTask(Claw);
-	/*while(true){
+	StartTask(FollowLine);
+	while(true){
 		if(SensorValue(lightSensor) < 300)
 		{
 
 		}
-	}*/
+	}
 	clawState = 1;
 	wait10Msec(100);
 	clawState = 0;
