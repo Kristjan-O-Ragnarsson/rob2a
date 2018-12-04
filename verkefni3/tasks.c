@@ -76,3 +76,33 @@ task Claw()
 		}
 	}
 }
+
+task FollowLine()
+{
+	int threshold = 2500;      /* found by taking a reading on both DARK and LIGHT    */
+                            /* surfaces, adding them together, then dividing by 2. */
+  while(true)
+  {
+    // RIGHT sensor sees dark:
+    if(SensorValue(lineFollowerLEFT) > threshold)
+    {
+      // counter-steer right:
+      motor[leftMotor]  = -31;
+      motor[rightMotor] = 31;
+    }
+    // CENTER sensor sees dark:
+    if(SensorValue(lineFollowerCENTER) > threshold)
+    {
+      // go straight
+      motor[leftMotor]  = 47;
+      motor[rightMotor] = 47;
+    }
+    // LEFT sensor sees dark:
+    if(SensorValue(lineFollowerRIGHT) > threshold)
+    {
+      // counter-steer left:
+      motor[leftMotor]  = 31;
+      motor[rightMotor] = -31;
+    }
+  }
+}
