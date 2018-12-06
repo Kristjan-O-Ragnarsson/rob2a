@@ -9,18 +9,6 @@ void clawMotorSpeed(int n){
 int clawState = 0;
 int armState = 0;
 
-task StopIfNeed()
-{
-	while(true)
-	{
-		if( vexRT[Btn8D] == 1 && vexRT[Btn7D] == 1 || SensorValue[touchSensor] == 1)
-		{
-      StopAllTasks();
-   	}
-	}
-
-}
-
 task BAtteryDisplay()
 {
 	bLCDBacklight = true;
@@ -105,4 +93,20 @@ task FollowLine()
       motor[rightMotor] = -31;
     }
   }
+}
+
+task StopIfNeed()
+{
+	while(true)
+	{
+		if( vexRT[Btn8D] == 1 && vexRT[Btn7D] == 1 || SensorValue[touchSensor] == 1)
+		{
+      StopAllTasks();
+   	}
+   	if(vexRT[Btn8U] == 1)
+   	{
+   		StopTask(FollowLine);
+   	}
+	}
+
 }
